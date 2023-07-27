@@ -3,6 +3,7 @@
 
 # postgres
 /postgres
+/.env
 
 # dependencies
 /node_modules
