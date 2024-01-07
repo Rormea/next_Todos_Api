@@ -3,7 +3,8 @@
 import { useRouter } from "next/navigation";
 import { FormEvent, useState, ChangeEvent } from "react";
 import { IoTrashOutline } from "react-icons/io5";
-import * as todosApi from '@/todos/helpers/todos';
+// import * as todosApi from '@/todos/helpers/todos';
+import { addTodo, deleteCompleted } from "@/todos/actions/todo-actions";
 
 
 export const NewTodo = () => {
@@ -17,10 +18,12 @@ export const NewTodo = () => {
         e.preventDefault();
         if (description.trim().length === 0) return
 
-        await todosApi.createTodo(description);
+        // await todosApi.createTodo(description); sin servr action
+
+        await addTodo(description);
 
         console.log('se envio submit', description,)
-        router.refresh();
+        // router.refresh();
         setdescription('');
     };
 
@@ -31,8 +34,11 @@ export const NewTodo = () => {
 
     const handlerDelete = async () => {
 
-        await todosApi.deleteCompleted();
-        router.refresh();
+        // await todosApi.deleteCompleted();
+        // router.refresh();
+        // Forma sin server action , es decir llamando al api
+
+        await deleteCompleted();
     };
 
 

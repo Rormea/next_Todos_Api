@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { IoBatteryFull, IoCalendarOutline, IoCheckboxOutline, IoListOutline, IoOptionsSharp, } from 'react-icons/io5'
+import { IoBasketOutline, IoBatteryFull, IoCalendarOutline, IoCheckboxOutline, IoCodeWorking, IoListOutline, IoOptionsSharp, } from 'react-icons/io5'
 import { SidebarItem } from './SidebarItem'
 // import { MenuItems } from './MenuItems'
 
@@ -16,15 +16,27 @@ const menuItems = [
         title: 'REST - TODOS',
     },
     {
-        path: '/dashboard/server-actions',
+        path: '/dashboard/server-todos',
         icon: <IoListOutline size={40} />,
         title: 'Server Actions',
+    },
+    {
+        path: '/dashboard/cookies',
+        icon: <IoCodeWorking size={40} />,
+        title: 'Cookies',
     },
     {
         path: '/dashboard/configuration',
         icon: <IoOptionsSharp size={40} />,
         title: 'Configuration',
     },
+    {
+        path: '/dashboard/products',
+        icon: <IoBasketOutline size={40} />,
+        title: 'Products',
+    },
+
+
 ]
 
 

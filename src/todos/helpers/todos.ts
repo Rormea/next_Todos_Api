@@ -9,7 +9,7 @@ export const updateTodo = async (id: string, complete: boolean): Promise<Todo> =
         complete: complete,
     }
 
-    const dbTodo = await fetch(`http://localhost:3000/api/${id}`,
+    const dbTodo = await fetch(`http://localhost:3000/api/${id}`,  //`http://localhost:3000/api/${id}`
         {
             method: 'PUT',
             body: JSON.stringify(bodyCompleted),
