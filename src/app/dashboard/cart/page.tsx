@@ -2,6 +2,7 @@ import { ItemCard } from "@/shopping-cart/components/ItemCard";
 import { cookies } from "next/headers";
 import type { Product } from '../../../data/products';
 import { products } from '../../../data/products';
+import { WidgetItem } from "@/components/sidebar";
 
 
 
@@ -52,9 +53,12 @@ export default function CartPage() {
     const productsInCart = getProductInCart(cart);
 
 
+    const totalPayCart = productsInCart.reduce((prev, current) => (current.product.price * current.quantity) + prev, 0);
+
+
     return (
         <div>
-            <h1 className="test-5xl" >Productos en el carrito</h1>
+            <h1 className="text-5xl" >Productos en el carrito</h1>
             <hr className="mb-2" />
 
             <div className="flex flex-col sm:flex-row gap-2 w-full" >
@@ -65,6 +69,16 @@ export default function CartPage() {
                             <ItemCard key={product.id} product={product} quantity={quantity} />
                         ))
                     }
+                </div>
+
+                <div className="flex flex-col w-full sm:w-4/12" >
+                    <WidgetItem title="Total a Pagar" >
+                        <div className=" mt-2 flex justify-center gap-4">
+                            <h3 className="text-3xl font-bold text-gray-700" >$ {(totalPayCart * 1.19).toFixed(2)}</h3>
+                        </div>
+                        <span className=" text-center font-bold text-gray-500  text-sm" >Valor de Compra Total =  $ {totalPayCart} </span>
+                        <span className=" text-center font-bold text-gray-500 text-sm" >Impuestos   (19% IGV)  =  $ {(totalPayCart * 0.19).toFixed(2)} </span>
+                    </WidgetItem>
                 </div>
             </div>
         </div>

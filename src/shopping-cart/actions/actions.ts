@@ -42,7 +42,15 @@ export const addProductToCart = (id: string) => {
 };
 
 
-export const removeProductFromCart = (id: string) => {
+export const removeAllProductsCart = (id: string) => {
+
+    const cookieCart = getCookieCart();
+    delete cookieCart[id];
+    setCookie('cart', JSON.stringify(cookieCart));
+};
+
+
+export const removeSingleProductFromCart = (id: string) => {
 
     const cookieCart = getCookieCart();
 
@@ -52,13 +60,8 @@ export const removeProductFromCart = (id: string) => {
         cookieCart[id] = 0;
     }
 
+    if (cookieCart[id] === 0) delete cookieCart[id];
+
     setCookie('cart', JSON.stringify(cookieCart));
 };
 
-
-export const removeAllProductsCart = (id: string) => {
-
-    const cookieCart = getCookieCart();
-    delete cookieCart[id];
-    setCookie('cart', JSON.stringify(cookieCart));
-};
